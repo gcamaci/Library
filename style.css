@@ -44,8 +44,9 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    
+}
+.hide-modal{
+    display: none;
 }
 .modal-content{
     border: solid 1px white;
