@@ -45,27 +45,30 @@ function addBookToLibrary(){
 function displayLibrary(){
     const shelf = document.querySelector('main');
     
-    myLibrary.forEach((book,index) => {
+    myLibrary.forEach((Book,index) => {
         //create card container DOM
         const card = document.createElement('div');
+        card.dataset.deleteBook = index;
+        console.log(card.dataset.deleteBook)
+        console.log(index)
         card.classList.add('card');
         shelf.appendChild(card);
 
         //card Title DOM
         const cardTitle = document.createElement('h3');
-        cardTitle.textContent = book.title;
+        cardTitle.textContent = Book.title;
         card.appendChild(cardTitle);
 
         //card Author
         const cardAuthor = document.createElement('p');
-        cardAuthor.textContent = book.author;
+        cardAuthor.textContent = Book.author;
         cardAuthor.classList.add('card-author')
         card.appendChild(cardAuthor);
 
         //Card Pages
         const cardPages = document.createElement('p');
         cardPages.classList.add('card-pages');
-        cardPages.textContent = book.pages;
+        cardPages.textContent = Book.pages;
         card.appendChild(cardPages);
 
         //Btn Wrapper
@@ -76,7 +79,7 @@ function displayLibrary(){
         //create closeout button DOM
         const deleteBtn = document.createElement('button');
         deleteBtn.type = "button";
-        deleteBtn.dataset.deleteCard = index
+        //deleteBtn.dataset.deleteCard = index
         deleteBtn.textContent = "Remove"
         deleteBtn.classList.add('btn');
         deleteBtn.classList.add('remove-card')
@@ -89,7 +92,17 @@ function displayLibrary(){
         btnWrapper.appendChild(readBtn);
 
         //event listeners 
+        deleteBtn.addEventListener('click',() => {
+            //console.log(card.dataset.deleteBook)
+            let carder = parseInt(card.dataset.deleteBook);
+            console.log(carder)
+            
+            //console.log(deleteThis);
+            console.log(myLibrary)
+            //deleteBook(deleteThis);
+            deleteBook(carder)
 
+        })
 
 
         
@@ -101,11 +114,15 @@ function displayLibrary(){
 
 //find an array method besides for each to loop through array and pop the one thats true 
 function deleteBook(bookNum){
-    myLibrary.forEach((book,index) => {
-        if(bookNum.dataset.deleteCard === index){
-            
+    const shelf = document.querySelector('main');
+    myLibrary.forEach((Book,index) => {
+        if(bookNum === index){
+            console.log(index);
+            shelf.removeChild
         }
+        
     });
+   
 }
 
 
