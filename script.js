@@ -4,14 +4,16 @@ const closeBtn = document.getElementById('close-modal');
 const modal = document.querySelector('.hide-modal');
 const addBook = document.getElementById('modal-button');
 
+const shelf = document.querySelector('main');
+
 
 let myLibrary = [];
 
 
 //Placeholder books
 const book1 = new Book('Giuseppe',"Camaci",299,false);
-const book2 = new Book('Giuseppe',"Camaci",299,false);
-const book3 = new Book('Giuseppe',"Camaci",299,false);
+const book2 = new Book('Rosario',"Camaci",299,false);
+const book3 = new Book('Desk',"Camaci",299,false);
 myLibrary.push(book1);
 myLibrary.push(book2);
 myLibrary.push(book3);
@@ -23,14 +25,14 @@ function Book(title,author,pages,read){
     this.author = author
     this.pages = pages
     this.read = read
+    this.id = 0;
 }
 function addBookToLibrary(){
     //get the input values from user
     const title = document.getElementById("title").value;
     const author = document.getElementById("author").value;
     const pages = document.getElementById("pages").value;
-    const shelf = document.querySelector('main');
-    //const read = document.getElementById("checkbox").value;
+    //create book and push to libray array
     const newBook = new Book(title,author,pages);
     myLibrary.push(newBook);
     shelf.textContent = '';
@@ -43,14 +45,10 @@ function addBookToLibrary(){
 3) Create toggle for read/unread.
 */
 function displayLibrary(){
-    const shelf = document.querySelector('main');
-    
     myLibrary.forEach((Book,index) => {
-        //create card container DOM
+        Book.id = index;
         const card = document.createElement('div');
         card.dataset.deleteBook = index;
-        console.log(card.dataset.deleteBook)
-        console.log(index)
         card.classList.add('card');
         shelf.appendChild(card);
 
@@ -79,7 +77,7 @@ function displayLibrary(){
         //create closeout button DOM
         const deleteBtn = document.createElement('button');
         deleteBtn.type = "button";
-        //deleteBtn.dataset.deleteCard = index
+        deleteBtn.dataset.deleteBook = index;
         deleteBtn.textContent = "Remove"
         deleteBtn.classList.add('btn');
         deleteBtn.classList.add('remove-card')
@@ -93,53 +91,28 @@ function displayLibrary(){
 
         //event listeners 
         deleteBtn.addEventListener('click',() => {
-            //console.log(card.dataset.deleteBook)
-            let carder = parseInt(card.dataset.deleteBook);
-            console.log(carder)
-            
-            //console.log(deleteThis);
-            console.log(myLibrary)
-            //deleteBook(deleteThis);
-            deleteBook(carder)
-
-        })
-
-
-        
+            let deleteMe = parseInt(deleteBtn.dataset.deleteBook);
+            deleteBook(deleteMe);
+        });
         
     });
+};
 
-
-}
-
-//find an array method besides for each to loop through array and pop the one thats true 
 function deleteBook(bookNum){
-    const shelf = document.querySelector('main');
-    myLibrary.forEach((Book,index) => {
-        if(bookNum === index){
-            console.log(index);
-            shelf.removeChild
-        }
-        
-    });
-   
+    myLibrary.splice(bookNum,1)
+    shelf.textContent = '';
+    displayLibrary()
+    console.log(myLibrary)
+
 }
-
-
-
-
-
-
-
-
 
 // we can probably do this an easier way in one function? 
+
 addBook.addEventListener('click', () => {
    modal.classList.remove('hide-modal');
    modal.classList.add('modal');
 
 });
-
 
 closeBtn.addEventListener('click', () => {
     modal.classList.remove('modal')
@@ -148,24 +121,3 @@ closeBtn.addEventListener('click', () => {
 
 
 displayLibrary();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
