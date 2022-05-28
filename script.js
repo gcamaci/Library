@@ -13,7 +13,7 @@ let myLibrary = [];
 //Placeholder books
 const book1 = new Book('Giuseppe',"Camaci",299,false);
 const book2 = new Book('Rosario',"Camaci",299,false);
-const book3 = new Book('Desk',"Camaci",299,false);
+const book3 = new Book('Desk',"Camaci",299,true);
 myLibrary.push(book1);
 myLibrary.push(book2);
 myLibrary.push(book3);
@@ -25,15 +25,26 @@ function Book(title,author,pages,read){
     this.author = author
     this.pages = pages
     this.read = read
-    this.id = 0;
+    
 }
+
+Book.prototype.ifRead = (speesh) => {
+    if(myLibrary[speesh].read === false){
+        console.log('im false motha fucka')
+    }else{
+        console.log('im true bitch')
+    }
+};
+
 function addBookToLibrary(){
     //get the input values from user
     const title = document.getElementById("title").value;
     const author = document.getElementById("author").value;
     const pages = document.getElementById("pages").value;
+    const reads = document.getElementById("read").value;
+    //console.log(read)
     //create book and push to libray array
-    const newBook = new Book(title,author,pages);
+    const newBook = new Book(title,author,pages,reads);
     myLibrary.push(newBook);
     shelf.textContent = '';
     displayLibrary()
@@ -46,7 +57,8 @@ function addBookToLibrary(){
 */
 function displayLibrary(){
     myLibrary.forEach((Book,index) => {
-        Book.id = index;
+        
+    
         const card = document.createElement('div');
         card.dataset.deleteBook = index;
         card.classList.add('card');
@@ -85,9 +97,18 @@ function displayLibrary(){
         // read button
         const readBtn = document.createElement('button')
         readBtn.classList.add('btn')
+        readBtn.dataset.readNum = index;
         readBtn.type = "button";
         readBtn.textContent = "read";
         btnWrapper.appendChild(readBtn);
+
+        readBtn.addEventListener('click', () => {
+            const readBook = parseInt(readBtn.dataset.readNum)
+            Book.ifRead(readBook);
+            //Book.ifRead()
+
+
+        });
 
         //event listeners 
         deleteBtn.addEventListener('click',() => {
