@@ -18,16 +18,29 @@
         
     </main>
     <section id="simpleModal" class="hide-modal">
-        <form class="modal-content">
-            <div>
+        <form  action="/" id="book-form" class="modal-content">
+            <div class="close-form">
+                <h2>Add a new book</h2>
                 <button type="button" id="close-modal">X</button>
             </div>
-            <input id="title" name="title">
-            <input id="author" name="author">
-            <input type="number" id="pages" name="pages">
-            <input type="checkbox" id="read" name="read">
+            <div class="input-container">
+                <input id="title" name="title" type="text" class="inpt" placeholder="Title" required>
+            </div>
+            <div class="input-container">
+                <input id="author" name="author" type="text" class="inpt" placeholder="Author" required>
+            </div>
+            <div class="input-container">
+                <input type="number" id="pages" name="pages" class="inpt" placeholder="Pages" required>
+            </div>
+            <div class="input-container">
+                <p>Have you read this?</p>
+                <input type="checkbox" id="read-check" name="read-check" checked>
+            </div>
+            <div class="input-container">
+                <button id="create-btn" type="submit" >Create +</button>
+            </div>
             
-            <button type="button">Create +</button>
+           
         </form>
         
     </section>

@@ -23,7 +23,7 @@ header{
 main{
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    padding: 20px;
+    padding: 15px;
     gap: 15px;
     
 
@@ -56,9 +56,40 @@ main{
 }
 .modal-content{
     border: solid 1px black;
+    background-color: yellow;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    
     z-index: 1;
-    width: 500px;
-    height: 300px;
+    width: 300px;
+    height:350px;
+}
+.close-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+#close-modal{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: 0;
+    
+}
+
+.input-container{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.inpt{
+    width: 100%;
+    height: 40px;
+}
+#create-btn{
+    width: 100%;
+    height: 40px;
 }
