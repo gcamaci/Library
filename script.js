@@ -11,7 +11,7 @@ let myLibrary = [];
 
 //Placeholder books
 const book1 = new Book('Giuseppe',"Camaci",299,false);
-const book2 = new Book('Rosario',"Camaci",299,false);
+const book2 = new Book('Anthony',"Camaci",299,false);
 const book3 = new Book('Desk',"Camaci",299,true);
 myLibrary.push(book1);
 myLibrary.push(book2);
@@ -105,16 +105,16 @@ function displayLibrary(){
         readBtn.classList.add('unread')
         readBtn.dataset.readNum = index;
         readBtn.type = "button";
-        readBtn.textContent = "read";
+        readBtn.textContent = "Read";
 
         //switch to ternary
-        
+        /*
         if(Book.read === true){
             readBtn.style.border = "2px solid green"
         }else{
             readBtn.style.border = "2px solid red"
         }
-        
+        */
         btnWrapper.appendChild(readBtn);
        
         readBtn.addEventListener('click', () => {
