@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&family=Source+Sans+Pro&display=swap');
 @import url('http://fonts.cdnfonts.com/css/pauschal');
 *{
     margin:0;
     padding:0;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
    
 
 }
@@ -11,54 +13,94 @@
     --accent-light-color: #B7BBC0;
     --accent-dark-color: #61ACE1;
     --background-dark-color: #208BE6;
-    --white-color : #FBF8F8;
+    --white-color : rgb(251, 248, 248);
+    --box-shadow: #0560b0;
+    --read-color: rgb(56, 247, 120);
+    --unread-color:rgb(246, 72, 72);
 
 }
 
 body{
-    background-color:var(--white-color);
+    background-color:var(--background-dark-color);
   
+}
 
-}
-img{
-    width: 100px;
-    height: 100px;
-}
 header{
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
     padding: 20px;
-    border: 1px solid black;
-    background-color: var(--background-dark-color);
+    background-color: var(--white-color);
+    box-shadow: 0 5px 3px -2px var(--box-shadow);
+    
 }
 header h1{
     font-family: 'pauschal', sans-serif;
-    color: var(--white-color);
+    color: var(--background-dark-color);    
     font-size: 4rem;
+}
+#dash-board{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding:20px;
+    padding-bottom: 0px;
+    
 }
 .create-wrap{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    
-
 }
-#modal-button{
+#stats{
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(3,1fr);
+    min-width: 200px;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--background-dark-color);
+    color: var(--white-color);
+    
+}
+#book-amount, #books-read,#page-amount{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.book-num-amount{
+    display: flex;
+    justify-content: center;
+}
+.icon{
+    width: 25px;
+    height: 25px;
+    
+}
+.rotate{
     background-image: url(./Images/plus.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     border-radius: 50px;
-    background-color: var(--white-color);
-    border: 1px solid;
-    border-color: var(--background-dark-color);
-    width: 50px;
-    height: 50px;
+    background-color: transparent;
+    border: 2px solid var(--white-color);
     
+    width: 60px;
+    height: 60px;   
     
+}
+.rotate:hover{
+    animation: rotation 1s infinite linear;
+}
+@keyframes rotation{
+    from { 
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
 }
 main{
     display: grid;
@@ -70,32 +112,73 @@ main{
 }
 
 .card{   
+    height: 300px;
     border: none;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 3fr 1fr;
     padding: 15px;
     align-items: center;
     color: var(--white-color);
     justify-content: space-between;
-    background-color:var(--accent-dark-color);
+    background-image: url(./Images/texture.png);
     border-radius: 20px;
+    box-shadow: 10px 10px 10px 2px #0560b0;
 }
-.btn-wrapper{
+.card h2{
+    
+    color: var(--white-color);
+}
+.book-info{
+    background-color: rgba(251, 248, 248,.2);
+    padding:10px;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    gap: 5px;
+    border: solid 1px var(--white-color);
+
+}
+.trash-can{
+    width: 100%;
+    text-align: end;
+}
+.remove-card{
+    background-image: url(./Images/delete.png);
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    border: none;
+}
+.remove-card:hover{
+    background-image:url(./Images/delete1.png) ;
+}
+
+.btn-wrapper{
+    display: flex;
+    justify-content: center;
     align-items: center;
     gap:15px;
     width: 100%;
+    height: 40px;
 }
 
 .btn{
-    width: 80%;
+    width: 100px;
     height: 30px;
-    border-color: var(--main-color);
-    border: none;
     border-radius:20px;
-    background-color: var(--white-color);
+    border: none;
+    background-color:transparent;
+    box-shadow: 1px 1px 3px 2px #3e3e3e;
+
+}
+.btn:hover{
+    width:105px;
+    height: 35px;
+    transition: .1;
 }
 .modal{
     background-color: rgb(245, 242, 242, .5);

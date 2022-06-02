@@ -10,16 +10,34 @@
 <body>
     <header>
         <h1>library</h1>
-        <img src="./Images/odin.png">
-    </header>
-    <section>
         <div class="create-wrap">
-            <button id="modal-button" type="button"></button>
+            <button id="modal-button" type="button" class="rotate"></button>
         </div>
-    </section>
+        <div id="stats">
+            <div id="book-amount">
+                <div class="book-num-icon">
+                    <img class="icon" src="./Images/bookshelf.png">
+                </div>
+                <p>Total Books:</p>
+                <p id="books">0</p>
+            </div>
+            <div id="books-read">
+                <div class="book-read-icon">
+                    <img class="icon" src="./Images/eye.png">
+                </div>
+                <p>Books Read:</p>
+                <p id="read-amount">0</p>
+            </div>
+            <div id="page-amount">
+                <div class="page-amount-icon">
+                    <img class= "icon" src="./Images/pages.png">
+                </div>
+                <p>Total Pages:</p>
+                <p id="total-pages">0</p>
+            </div>
+        </div>
+    </header>
     <main>
-    
-        
     </main>
     <section id="simpleModal" class="hide-modal">
         <form  action="/" id="book-form" class="modal-content">

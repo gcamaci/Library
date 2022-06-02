@@ -26,12 +26,10 @@ function Book(title,author,pages,read){
     this.read = read
 
 }
-
 Book.prototype.ifRead = function (){
+    
     if(this.read === false){
-        this.read = true;
-        console.log(this.read)
-        
+        this.read = true;   
     }else{
         this.read = false
         console.log(this.read)
@@ -63,42 +61,59 @@ function addBookToLibrary(){
 */
 
 function displayLibrary(){
+    const readDisplay = document.getElementById('read-amount');
+    const bookNumDisplay  = document.getElementById('books');
+    const allPages = document.getElementById('total-pages');
+    let readTotal = 0;
+    let totalBooks = 0;
+    let totalPages = 0;
     myLibrary.forEach((Book,index) => {
-    
+        totalBooks++
+        totalPages = totalPages + parseInt(Book.pages);
+        //create Card DOM
         const card = document.createElement('div');
         card.dataset.deleteBook = index;
         card.classList.add('card');
         shelf.appendChild(card);
 
+        const trashCan = document.createElement('div');
+        trashCan.classList.add('trash-can')
+        const deleteBtn = document.createElement('button');
+        deleteBtn.type = "button";
+        deleteBtn.dataset.deleteBook = index;
+        deleteBtn.classList.add('remove-card');
+        card.appendChild(trashCan);
+        trashCan.appendChild(deleteBtn);
+
+        //create accent container
+        const bookInfo = document.createElement('div');
+        bookInfo.classList.add('book-info')
+        card.appendChild(bookInfo)
+
         //card Title DOM
-        const cardTitle = document.createElement('h3');
+        const cardTitle = document.createElement('h2');
         cardTitle.textContent = Book.title;
-        card.appendChild(cardTitle);
+        bookInfo.appendChild(cardTitle);
 
         //card Author
         const cardAuthor = document.createElement('p');
         cardAuthor.textContent = Book.author;
         cardAuthor.classList.add('card-author')
-        card.appendChild(cardAuthor);
+        bookInfo.appendChild(cardAuthor);
 
         //Card Pages
         const cardPages = document.createElement('p');
         cardPages.classList.add('card-pages');
         cardPages.textContent = Book.pages;
-        card.appendChild(cardPages);
+        bookInfo.appendChild(cardPages);
 
         //Btn Wrapper
         const btnWrapper = document.createElement('div');
         btnWrapper.classList.add('btn-wrapper');
         card.appendChild(btnWrapper);
-        //create closeout button DOM
-        const deleteBtn = document.createElement('button');
-        deleteBtn.type = "button";
-        deleteBtn.dataset.deleteBook = index;
-        deleteBtn.textContent = "Remove"
-        deleteBtn.classList.add('btn');
-        deleteBtn.classList.add('remove-card')
-        btnWrapper.appendChild(deleteBtn);
+        
+        
+        
         // read button
         const readBtn = document.createElement('button')
         readBtn.classList.add('btn')
@@ -108,19 +123,24 @@ function displayLibrary(){
         readBtn.textContent = "Read";
 
         //switch to ternary
-        /*
+        
         if(Book.read === true){
-            readBtn.style.border = "2px solid green"
+            readBtn.style.backgroundColor = "var(--read-color)";
+            readBtn.textContent = "Read";
+            readTotal++
+            
         }else{
-            readBtn.style.border = "2px solid red"
+            readBtn.textContent = 'Not Read';
+            readBtn.style.backgroundColor = "var(--unread-color)";
         }
-        */
+        
         btnWrapper.appendChild(readBtn);
        
         readBtn.addEventListener('click', () => {
             let bookIndex = myLibrary[parseInt(readBtn.dataset.readNum)]
             bookIndex.ifRead()
             shelf.innerHTML = ''
+            console.log(myLibrary)
             displayLibrary()
  
         });
@@ -131,15 +151,17 @@ function displayLibrary(){
         });
         
     });
+    readDisplay.textContent = readTotal;
+    bookNumDisplay.textContent = totalBooks;
+    allPages.textContent = totalPages;
 };
 
 function deleteBook(bookNum){
     myLibrary.splice(bookNum,1)
     shelf.textContent = '';
     displayLibrary()
-    
-
 }
+
 createBook.addEventListener('click', ()=>{
     addBookToLibrary()
 
