@@ -12,8 +12,8 @@
     --main-color: #89C1E0;
     --accent-light-color: #B7BBC0;
     --accent-dark-color: #61ACE1;
-    --background-dark-color: #208BE6;
-    --white-color : rgb(251, 248, 248);
+    --background-dark-color: #1e89e6;
+    --white-color : #fbf8f8;
     --box-shadow: #0560b0;
     --read-color: rgb(56, 247, 120);
     --unread-color:rgb(246, 72, 72);
@@ -104,58 +104,74 @@ header h1{
 }
 main{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     padding: 20px;
-    justify-content: center;
     gap: 20px;
     
 }
 
-.card{   
-    height: 300px;
-    border: none;
-    
+.card{  
+    min-height: 300px;
+    max-width: 300px;
+    border: 1px solid var(--white-color);
     display: grid;
-    grid-template-columns: 1fr;
     grid-template-rows: 1fr 3fr 1fr;
     padding: 15px;
-    align-items: center;
+    
     color: var(--white-color);
-    justify-content: space-between;
-    background-image: url(./Images/texture.png);
+    
+    background-color: rgba(2, 2, 2, 0.5);
     border-radius: 20px;
     box-shadow: 10px 10px 10px 2px #0560b0;
 }
+
+.trash-can{
+   
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.remove-card{
+    background-color: transparent;
+    background-image: url(./Images/delete1.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    width: 30px;
+    height: 30px;
+    transition: all 0.5s ease;
+    transform: scale(1);
+}
+.remove-card:hover{
+    cursor: pointer;
+    transform: scale(1.25);
+
+}
 .card h2{
-    
+    font-size: 1.5rem;
     color: var(--white-color);
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+}
+.card h3{
+    font-size: 1rem;
+    font-style: italic;
 }
 .book-info{
-    background-color: rgba(251, 248, 248,.2);
+    text-align: center;
     padding:10px;
     border-radius: 10px;
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    border: solid 1px var(--white-color);
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    
 
 }
-.trash-can{
-    width: 100%;
-    text-align: end;
-}
-.remove-card{
-    background-image: url(./Images/delete.png);
-    width: 24px;
-    height: 24px;
-    background-color: transparent;
-    border: none;
-}
-.remove-card:hover{
-    background-image:url(./Images/delete1.png) ;
-}
+
 
 .btn-wrapper{
     display: flex;
@@ -164,24 +180,29 @@ main{
     gap:15px;
     width: 100%;
     height: 40px;
+    
 }
 
 .btn{
     width: 100px;
     height: 30px;
     border-radius:20px;
-    border: none;
+    border: 2px solid var(--white-color);
     background-color:transparent;
-    box-shadow: 1px 1px 3px 2px #3e3e3e;
+    color:var(--white-color);
+    font-weight: bold;
+    font-size: 14px;
+
+    transition: all 0.5s ease;
+    transform: scale(1);
 
 }
 .btn:hover{
-    width:105px;
-    height: 35px;
-    transition: .1;
+    cursor: pointer;
+    transform: scale(1.10);
 }
 .modal{
-    background-color: rgb(245, 242, 242, .5);
+    background-color: rgba(27, 26, 26, 0.5);
     position: absolute;
     width: 100%;
     height: 100%;
@@ -196,12 +217,12 @@ main{
 }
 .modal-content{
     border: solid 1px black;
-    background-color: yellow;
+    background-color: var(--white-color);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 20px;
-    
+    border-radius: 10px;
     z-index: 1;
     width: 300px;
     height:350px;
@@ -223,12 +244,22 @@ main{
     display: flex;
     justify-content: center;
     gap: 10px;
+    
 }
 .inpt{
     width: 100%;
     height: 40px;
+    border-radius: 10px;
+    padding: 5px;
+    border: 2px solid var(--background-dark-color);
 }
 #create-btn{
     width: 100%;
     height: 40px;
+    border-radius: 10px;
+    border:none;
+    background-color: var(--background-dark-color);
+    color: var(--white-color);
+    font-size: 1rem;
+    font-weight: bold
 }

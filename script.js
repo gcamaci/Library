@@ -6,13 +6,12 @@ const addBook = document.getElementById('modal-button');
 const createBook = document.getElementById('create-btn')
 const shelf = document.querySelector('main');
 const form = document.getElementById('book-form')
-
 let myLibrary = [];
 
 //Placeholder books
-const book1 = new Book('Giuseppe',"Camaci",299,false);
-const book2 = new Book('Anthony',"Camaci",299,false);
-const book3 = new Book('Desk',"Camaci",299,true);
+const book1 = new Book('To Kill a Mocking Bird',"Harper Lee",299,false);
+const book2 = new Book('A Dance With Dragons',"George RR Martin",299,false);
+const book3 = new Book('The Winds of Winter',"George RR Martin",299,true);
 myLibrary.push(book1);
 myLibrary.push(book2);
 myLibrary.push(book3);
@@ -82,7 +81,7 @@ function displayLibrary(){
         deleteBtn.type = "button";
         deleteBtn.dataset.deleteBook = index;
         deleteBtn.classList.add('remove-card');
-        card.appendChild(trashCan);
+        card.appendChild(trashCan)
         trashCan.appendChild(deleteBtn);
 
         //create accent container
@@ -96,7 +95,7 @@ function displayLibrary(){
         bookInfo.appendChild(cardTitle);
 
         //card Author
-        const cardAuthor = document.createElement('p');
+        const cardAuthor = document.createElement('h3');
         cardAuthor.textContent = Book.author;
         cardAuthor.classList.add('card-author')
         bookInfo.appendChild(cardAuthor);
@@ -112,8 +111,6 @@ function displayLibrary(){
         btnWrapper.classList.add('btn-wrapper');
         card.appendChild(btnWrapper);
         
-        
-        
         // read button
         const readBtn = document.createElement('button')
         readBtn.classList.add('btn')
@@ -125,13 +122,14 @@ function displayLibrary(){
         //switch to ternary
         
         if(Book.read === true){
-            readBtn.style.backgroundColor = "var(--read-color)";
+            readBtn.style.border = "2px solid var(--read-color)"
             readBtn.textContent = "Read";
             readTotal++
             
         }else{
+            readBtn.style.border = "2px solid var(--unread-color)"
             readBtn.textContent = 'Not Read';
-            readBtn.style.backgroundColor = "var(--unread-color)";
+            
         }
         
         btnWrapper.appendChild(readBtn);
@@ -183,3 +181,8 @@ form.addEventListener('submit',(e)=>{
     e.preventDefault()
 });
 displayLibrary();
+
+function getModal(){
+    
+
+}
