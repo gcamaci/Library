@@ -1,22 +1,17 @@
 
 //modal DOM
-const closeBtn = document.getElementById('close-modal');
-const modal = document.querySelector('.hide-modal');
-const addBook = document.getElementById('modal-button');
-const createBook = document.getElementById('create-btn')
+
 const shelf = document.querySelector('main');
-const form = document.getElementById('book-form')
+
 let myLibrary = [];
 
 //Placeholder books
-const book1 = new Book('To Kill a Mocking Bird',"Harper Lee",299,false);
+
 const book2 = new Book('A Dance With Dragons',"George RR Martin",299,false);
 const book3 = new Book('The Winds of Winter',"George RR Martin",299,true);
-myLibrary.push(book1);
+
 myLibrary.push(book2);
 myLibrary.push(book3);
-
-
 //constructor
 function Book(title,author,pages,read){
     this.title = title
@@ -160,29 +155,37 @@ function deleteBook(bookNum){
     displayLibrary()
 }
 
-createBook.addEventListener('click', ()=>{
-    addBookToLibrary()
 
-});
 // we can probably do this an easier way in one function? 
-
-addBook.addEventListener('click', () => {
-   modal.classList.remove('hide-modal');
-   modal.classList.add('modal');
-
-});
-
-closeBtn.addEventListener('click', () => {
-    modal.classList.remove('modal')
-    modal.classList.add("hide-modal");
-});
-
-form.addEventListener('submit',(e)=>{
-    e.preventDefault()
-});
-displayLibrary();
-
 function getModal(){
+    const closeBtn = document.getElementById('close-modal');
+    const modal = document.querySelector('.hide-modal');
+    const addBook = document.getElementById('modal-button');
+    const createBook = document.getElementById('create-btn')
+    const shelf = document.querySelector('main');
+    const form = document.getElementById('book-form');
+
+    addBook.addEventListener('click', () => {
+        modal.classList.remove('hide-modal');
+        modal.classList.add('modal');
+     
+     });
+     
+     closeBtn.addEventListener('click', () => {
+         modal.classList.remove('modal')
+         modal.classList.add("hide-modal");
+     });
+     
+     form.addEventListener('submit',(e)=>{
+         e.preventDefault()
+     });
+
+     createBook.addEventListener('click', ()=>{
+        addBookToLibrary()
     
+    });
 
 }
+getModal();
+displayLibrary();
+
