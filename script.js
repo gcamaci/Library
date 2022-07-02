@@ -5,30 +5,40 @@ const shelf = document.querySelector('main');
 
 let myLibrary = [];
 
-//Placeholder books
+
+class Book{
+    constructor(title,author,pages,read){
+        this.title = title
+        this.author = author
+        this.pages = pages
+        this.read = read
+
+    }
+
+
+    ifRead(){
+        if(this.read ===false){
+            this.read = true;
+        }else{
+            this.read = false;
+        }
+    }
+
+    get read(){
+        return this._read
+    }
+    set read(value){
+        return this._read = value
+    }
+
+}
 
 const book2 = new Book('A Dance With Dragons',"George RR Martin",299,false);
 const book3 = new Book('The Winds of Winter',"George RR Martin",299,true);
 
 myLibrary.push(book2);
 myLibrary.push(book3);
-//constructor
-function Book(title,author,pages,read){
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.read = read
 
-}
-Book.prototype.ifRead = function (){
-    
-    if(this.read === false){
-        this.read = true;   
-    }else{
-        this.read = false
-        console.log(this.read)
-    }
-}
 
 function addBookToLibrary(){
     //get the input values from user
